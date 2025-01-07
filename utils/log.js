@@ -1,13 +1,13 @@
 const error = (...args) => {
-  console.error("[WP-CLI]", ...args);
+  console.error("[mp-pack-cli]", ...args);
 };
 
 const warn = (...args) => {
-  console.warn("[WP-CLI]", ...args);
+  console.warn("[mp-pack-cli]", ...args);
 };
 
 const info = (...args) => {
-  console.info("[WP-CLI]", ...args);
+  console.info("[mp-pack-cli]", ...args);
 };
 
 module.exports = { error, warn, info };

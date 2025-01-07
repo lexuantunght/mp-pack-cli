@@ -1,6 +1,6 @@
 {
-  "name": "wp-cli",
-  "version": "25.1.1",
+  "name": "mp-pack-cli",
+  "version": "25.2.1",
   "description": "A CLI for create and bootstrap a react app",
   "main": "./bin/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
   "repository": "https://github.com/lexuantunght/wp-cli",
   "homepage": "https://github.com/lexuantunght/wp-cli#readme",
   "bin": {
-    "wp-cli": "./bin/index.js"
+    "mp-pack-cli": "./bin/index.js"
   },
   "keywords": [
     "cli",
@@ -18,16 +18,14 @@
   "author": "TungLe",
   "license": "MIT",
   "dependencies": {
+    "@vitejs/plugin-react": "4.1.0",
+    "commander": "^13.0.0",
+    "cross-env": "^7.0.3",
     "gulp": "4.0.2",
     "gulp-consolidate": "0.2.0",
     "gulp-iconfont": "11.0.1",
     "optimist": "0.6.1",
-    "@vitejs/plugin-react": "4.1.0",
-    "autoprefixer": "^10.4.19",
-    "cross-env": "^7.0.3",
-    "postcss": "^8.4.38",
     "sass": "^1.77.2",
-    "tailwindcss": "^3.4.4",
     "vite": "^4.5.0",
     "vite-tsconfig-paths": "4.2.1"
   }

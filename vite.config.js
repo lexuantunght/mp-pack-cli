@@ -10,7 +10,7 @@ import fs from "fs";
 
 function reactVirtualized() {
   return {
-    name: "wp-cli:react-virtualized",
+    name: "mp-pack-cli:react-virtualized",
     configResolved() {
       if (
         !require(path.join(
@@ -38,7 +38,7 @@ function reactVirtualized() {
 
 function reactJSX() {
   return {
-    name: "wp-cli:treat-js-files-as-jsx",
+    name: "mp-pack-cli:treat-js-files-as-jsx",
     async transform(code, id) {
       if (!id.match(/src\/.*\.js$/)) return null;
 
@@ -66,7 +66,7 @@ export default defineConfig({
     __DEV__: process.env.NODE_ENV == "development",
   },
   build: {
-    outDir: path.resolve(__dirname, "build"),
+    outDir: path.resolve(process.cwd(), "build"),
     emptyOutDir: true,
     assetsInlineLimit: 0,
     rollupOptions: {
@@ -84,7 +84,7 @@ export default defineConfig({
     },
     copyPublicDir: true,
   },
-  publicDir: path.resolve(__dirname, "public"),
+  publicDir: path.resolve(process.cwd(), "public"),
   esbuild: {
     legalComments: "none",
   },

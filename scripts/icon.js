@@ -2,12 +2,14 @@ var gulp = require("gulp");
 var consolidate = require("gulp-consolidate");
 var iconfont = require("gulp-iconfont");
 const argv = require("optimist").argv;
-const Logger = require("./utils/log");
+const Logger = require("../utils/log");
 
 var runTimestamp = Math.round(Date.now() / 1000);
 
 const inpDir = argv.i;
 const outDir = argv.o;
+const templateDir = argv.t;
+const fontName = argv.name;
 
 Logger.info("Generate icon from Input:", inpDir);
 Logger.info("output:", outDir);
@@ -17,7 +19,7 @@ gulp.task("iconfont", function () {
     .src([`${inpDir}/*.svg`]) // folder svg
     .pipe(
       iconfont({
-        fontName: "titan-font", // font name
+        fontName: fontName || "mp-font", // font name
         formats: ["ttf", "eot", "woff", "woff2", "svg"], //format file font
         fontHeight: 1000,
         normalize: true,
@@ -28,7 +30,7 @@ gulp.task("iconfont", function () {
     )
     .on("glyphs", function (glyphs, options) {
       gulp
-        .src("template/icon.css") // folder file css before
+        .src(templateDir) // folder file css before
         .pipe(
           consolidate("lodash", {
             glyphs: glyphs,

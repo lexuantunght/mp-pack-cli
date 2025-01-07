@@ -1,7 +1,7 @@
 # To install
 
-- npm i -D wp-cli
+- npm i -D mp-pack-cli
 
 # See guide
 
-- wp-cli help
+- mp-pack-cli help
