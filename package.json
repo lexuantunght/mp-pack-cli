@@ -9,7 +9,7 @@
   "repository": "https://github.com/lexuantunght/wp-cli",
   "homepage": "https://github.com/lexuantunght/wp-cli#readme",
   "bin": {
-    "mpp": "./bin/index.js"
+    "wp-cli": "./bin/index.js"
   },
   "keywords": [
     "cli",
