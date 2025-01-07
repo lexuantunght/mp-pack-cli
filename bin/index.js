@@ -24,6 +24,14 @@ program
   });
 
 program
+  .command("build:ssr")
+  .allowUnknownOption()
+  .allowExcessArguments()
+  .action(() => {
+    require("./cmd-build-ssr").exec();
+  });
+
+program
   .command("dev")
   .allowUnknownOption()
   .allowExcessArguments()

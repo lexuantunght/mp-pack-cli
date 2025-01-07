@@ -4,6 +4,7 @@ import {
   transformWithEsbuild,
 } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
+import commonjs from 'vite-plugin-commonjs';
 import react from "@vitejs/plugin-react";
 import path from "path";
 import fs from "fs";
@@ -59,6 +60,7 @@ export default defineConfig({
     react(),
     splitVendorChunkPlugin(),
     tsconfigPaths(),
+    commonjs(),
     reactVirtualized(),
   ],
   define: {
