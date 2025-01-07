@@ -4,6 +4,7 @@ const Logger = require("../utils/log");
 
 const INP_DIR = argv.i; //'src/web/static/lang/lang_pomodoro.csv';
 const OUT_DIR = argv.o; //'src/web/static/locales';
+const isClean = argv.clean;
 
 csv = fs.readFileSync(INP_DIR);
 
@@ -29,7 +30,7 @@ const writeOut = (locale, out) => {
 };
 
 (async () => {
-  if (fs.existsSync(OUT_DIR)) {
+  if (isClean && fs.existsSync(OUT_DIR)) {
     fs.rmdirSync(OUT_DIR, { recursive: true, force: true });
   }
   for (let i = 1; i < headers.length; i++) {

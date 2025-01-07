@@ -2,6 +2,7 @@ exports.exec = async () => {
   const argv = require("optimist").argv;
   const path = require("path");
   const fs = require("fs");
+  const Logger = require("../utils/log");
 
   const templateFolder = path.join(__dirname, `../template/proj`);
   const appName = argv["_"][1];
@@ -14,6 +15,7 @@ exports.exec = async () => {
     return new Promise((resolve, reject) => {
       fn(...args, (err, data) => {
         if (err) {
+          Logger.error(err);
           reject(err);
         } else {
           resolve(data);
@@ -22,7 +24,7 @@ exports.exec = async () => {
     });
   };
 
-  console.log("Creating app from template");
+  Logger.info("Creating app from template");
 
   await runAsPromise(ncp, templateFolder, outDir);
   const editFiles = ["package.json", "index.html"];
@@ -37,8 +39,8 @@ exports.exec = async () => {
     );
   }
 
-  console.log("Installing dependencies");
+  Logger.info("Installing dependencies");
   await runAsPromise(exec, `cd ${outDir} && npm install`);
 
-  console.log("Success create app at", outDir);
+  Logger.info("Success create app at", outDir);
 };

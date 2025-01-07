@@ -11,8 +11,8 @@ const outDir = argv.o;
 const templateDir = argv.t;
 const fontName = argv.name;
 
-Logger.info("Generate icon from Input:", inpDir);
-Logger.info("output:", outDir);
+Logger.info("Generate icons from Input:", inpDir);
+Logger.info("Generate to Output:", outDir);
 
 gulp.task("iconfont", function () {
   return gulp
@@ -41,4 +41,8 @@ gulp.task("iconfont", function () {
         .pipe(gulp.dest(outDir)); // folder file css after execute
     })
     .pipe(gulp.dest(outDir)); // folder font compiled
+});
+
+gulp.series(["iconfont"])((err) => {
+  if (err) console.error(err);
 });

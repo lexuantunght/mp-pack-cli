@@ -1,6 +1,6 @@
 {
   "name": "mp-pack-cli",
-  "version": "25.2.2",
+  "version": "25.2.3",
   "description": "A CLI for create and bootstrap a react app",
   "main": "./bin/index.js",
   "scripts": {
