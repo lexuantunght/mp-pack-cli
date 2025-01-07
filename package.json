@@ -1,6 +1,6 @@
 {
   "name": "mp-pack-cli",
-  "version": "25.2.4",
+  "version": "1.0.0",
   "description": "A CLI for create and bootstrap a react app",
   "main": "./bin/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "cli",
     "npmtool"
   ],
-  "author": "TungLe",
+  "author": "lexuantunght",
   "license": "MIT",
   "dependencies": {
     "@vitejs/plugin-react": "4.1.0",
