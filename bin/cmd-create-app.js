@@ -3,6 +3,7 @@ exports.exec = async () => {
   const path = require("path");
   const fs = require("fs");
   const Logger = require("../utils/log");
+  const cliVersion = require("../package.json").version;
 
   const templateFolder = path.join(__dirname, `../template/proj`);
   const appName = argv["_"][1];
@@ -34,7 +35,9 @@ exports.exec = async () => {
     await runAsPromise(
       fs.writeFile,
       editFilePath,
-      data.replace(/<%=appName%>/g, appName),
+      data
+        .replace(/<%=appName%>/g, appName)
+        .replace(/<%=cliVersion%>/g, cliVersion),
       "utf-8"
     );
   }
