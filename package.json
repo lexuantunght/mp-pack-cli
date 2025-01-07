@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "https://github.com/lexuantunght/wp-cli",
-  "homepage": "https://github.com/lexuantunght/wp-cli#readme",
+  "repository": "https://github.com/lexuantunght/mp-pack-cli",
+  "homepage": "https://github.com/lexuantunght/mp-pack-cli#readme",
   "bin": {
     "mp-pack-cli": "./bin/index.js"
   },
