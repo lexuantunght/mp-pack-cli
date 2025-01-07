@@ -8,11 +8,11 @@ program.command("help").action(() => {
 });
 
 program
-  .command("create-app")
+  .command("new")
   .allowUnknownOption()
   .allowExcessArguments()
   .action(() => {
-    require("./cmd-create-app").exec();
+    require("./cmd-new").exec();
   });
 
 program
