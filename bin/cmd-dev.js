@@ -4,11 +4,7 @@ exports.exec = async () => {
   const Logger = require("../utils/log");
 
   const port = argv.port || process.env.PORT || 3000;
-  const packageName = "mp-pack-cli";
-  const configFilePath = path.join(
-    process.cwd(),
-    `node_modules/${packageName}/vite.config.js`
-  );
+  const configFilePath = path.join(__dirname, `../vite.config.js`);
 
   const vite = require("vite");
   const server = await vite.createServer({

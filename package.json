@@ -1,6 +1,6 @@
 {
   "name": "mp-pack-cli",
-  "version": "25.2.1",
+  "version": "25.2.2",
   "description": "A CLI for create and bootstrap a react app",
   "main": "./bin/index.js",
   "scripts": {
@@ -24,6 +24,7 @@
     "gulp": "4.0.2",
     "gulp-consolidate": "0.2.0",
     "gulp-iconfont": "11.0.1",
+    "ncp": "^2.0.0",
     "optimist": "0.6.1",
     "sass": "^1.77.2",
     "vite": "^4.5.0",

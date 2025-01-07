@@ -1,11 +1,7 @@
 exports.exec = () => {
   const path = require("path");
   const argv = require("optimist").argv;
-  const packageName = "mp-pack-cli";
-  const configFilePath = path.join(
-    process.cwd(),
-    `node_modules/${packageName}/scripts/lang.js`
-  );
+  const configFilePath = path.join(__dirname, `../scripts/lang.js`);
 
   const inpDir = path.join(process.cwd(), argv.i);
   const outDir = path.join(process.cwd(), argv.o);

@@ -8,6 +8,14 @@ program.command("help").action(() => {
 });
 
 program
+  .command("create-app")
+  .allowUnknownOption()
+  .allowExcessArguments()
+  .action(() => {
+    require("./cmd-create-app").exec();
+  });
+
+program
   .command("build")
   .allowUnknownOption()
   .allowExcessArguments()
