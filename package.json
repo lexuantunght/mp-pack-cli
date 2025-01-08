@@ -20,7 +20,6 @@
   "dependencies": {
     "@vitejs/plugin-react": "4.1.0",
     "commander": "^13.0.0",
-    "cross-env": "^7.0.3",
     "gulp": "4.0.2",
     "gulp-consolidate": "0.2.0",
     "gulp-iconfont": "11.0.1",
