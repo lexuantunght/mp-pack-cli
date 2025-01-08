@@ -18,6 +18,9 @@
   "author": "lexuantunght",
   "license": "MIT",
   "dependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@rollup/plugin-babel": "^6.0.4",
     "@vitejs/plugin-react": "4.1.0",
     "commander": "^13.0.0",
     "gulp": "4.0.2",

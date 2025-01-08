@@ -5,14 +5,18 @@ exports.exec = async () => {
   const configSSRFilePath = path.join(__dirname, `../vite.ssr.config.js`);
   const vite = require("vite");
 
+  const entries = [];
+  for (let i = 1; i < argv["_"].length; i++) {
+    entries.push(path.resolve(process.cwd(), argv["_"][i]));
+  }
+
   await vite.build({
     configFile: configSSRFilePath,
     mode: "production",
     build: {
       lib: {
-        entry: path.resolve(process.cwd(), argv.entry || argv["_"][1]),
-        name: argv.name,
-        formats: ["cjs", "es"],
+        entry: entries,
+        formats: argv.format ? argv.format.split(",") : ["cjs"],
       },
     },
   });
