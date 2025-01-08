@@ -13,26 +13,27 @@ function reactVirtualized() {
   return {
     name: "mp-pack-cli:react-virtualized",
     configResolved() {
-      if (
-        !require(path.join(
-          process.cwd(),
-          `package.json`
-        )).dependencies.hasOwnProperty("react-virtualized")
-      ) {
-        return;
-      }
-      const file = require
-        .resolve("react-virtualized")
-        .replace(
-          path.join("dist", "commonjs", "index.js"),
-          path.join("dist", "es", "WindowScroller", "utils", "onScroll.js")
+      let modified = null;
+      let file = null;
+      try {
+        file = require
+          .resolve("react-virtualized")
+          .replace(
+            path.join("dist", "commonjs", "index.js"),
+            path.join("dist", "es", "WindowScroller", "utils", "onScroll.js")
+          );
+        const code = fs.readFileSync(file, "utf-8");
+        modified = code.replace(
+          `import { bpfrpt_proptype_WindowScroller } from "../WindowScroller.js";`,
+          ""
         );
-      const code = fs.readFileSync(file, "utf-8");
-      const modified = code.replace(
-        `import { bpfrpt_proptype_WindowScroller } from "../WindowScroller.js";`,
-        ""
-      );
-      fs.writeFileSync(file, modified);
+      } catch {
+        modified = null;
+        file = null;
+      }
+      if (modified && file) {
+        fs.writeFileSync(file, modified);
+      }
     },
   };
 }
