@@ -12,6 +12,14 @@ function getDependencies() {
   });
 }
 
+function getPlatform() {
+  return JSON.stringify(process.env.PLATFORM || "web");
+}
+
+function getIsDev() {
+  return process.env.NODE_ENV == "development";
+}
+
 export default defineConfig({
   base: "./",
   plugins: [
@@ -24,8 +32,11 @@ export default defineConfig({
     }),
   ],
   define: {
-    __PLATFORM__: JSON.stringify(process.env.PLATFORM || process.platform),
-    __DEV__: process.env.NODE_ENV == "development",
+    __PLATFORM__: getPlatform(),
+    __DEV__: getIsDev(),
+    __WEB__: getPlatform() == "web",
+    __MOBILE__: getPlatform() == "ios" || getPlatform() == "android",
+    __VERSION__: JSON.stringify(process.env.npm_package_version),
   },
   build: {
     outDir: path.resolve(process.cwd(), "build"),
