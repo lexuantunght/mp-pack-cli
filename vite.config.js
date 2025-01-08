@@ -6,6 +6,7 @@ import {
 import tsconfigPaths from "vite-tsconfig-paths";
 import commonjs from "vite-plugin-commonjs";
 import react from "@vitejs/plugin-react";
+import svgr from "vite-plugin-svgr";
 import path from "path";
 import fs from "fs";
 
@@ -71,6 +72,7 @@ export default defineConfig({
     tsconfigPaths(),
     commonjs(),
     reactVirtualized(),
+    svgr({ include: "**/*.svg" }),
   ],
   define: {
     __PLATFORM__: getPlatform(),
