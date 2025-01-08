@@ -6,7 +6,6 @@ import {
 import tsconfigPaths from "vite-tsconfig-paths";
 import commonjs from "vite-plugin-commonjs";
 import react from "@vitejs/plugin-react";
-import typescript from "@rollup/plugin-typescript";
 import path from "path";
 import fs from "fs";
 
@@ -71,7 +70,6 @@ export default defineConfig({
     splitVendorChunkPlugin(),
     tsconfigPaths(),
     commonjs(),
-    typescript(),
     reactVirtualized(),
   ],
   define: {
