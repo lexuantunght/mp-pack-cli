@@ -1,5 +1,6 @@
 exports.exec = async () => {
   const path = require("path");
+  const argv = require("optimist").argv;
 
   const configFilePath = path.join(__dirname, `../vite.config.js`);
   const vite = require("vite");
