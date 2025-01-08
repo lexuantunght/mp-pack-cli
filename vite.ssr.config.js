@@ -39,7 +39,6 @@ export default defineConfig({
     __VERSION__: JSON.stringify(process.env.npm_package_version),
   },
   build: {
-    outDir: path.resolve(process.cwd(), "build"),
     emptyOutDir: true,
     assetsInlineLimit: 0,
     copyPublicDir: false,

@@ -16,5 +16,8 @@ exports.exec = async () => {
   await vite.build({
     configFile: configFilePath,
     mode: "production",
+    build: {
+      outDir: path.resolve(process.cwd(), argv.outDir || "build"),
+    },
   });
 };

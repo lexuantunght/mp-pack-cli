@@ -26,6 +26,7 @@ exports.exec = async () => {
         entry: entries,
         formats: argv.format ? argv.format.split(",") : ["cjs"],
       },
+      outDir: path.resolve(process.cwd(), argv.outDir || "build"),
     },
   });
 };
