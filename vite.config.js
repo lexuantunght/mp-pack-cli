@@ -72,7 +72,7 @@ export default defineConfig({
     tsconfigPaths(),
     commonjs(),
     reactVirtualized(),
-    svgr({ include: "**/*.svg" }),
+    svgr({ include: "**/*.svg?react" }),
   ],
   define: {
     __PLATFORM__: getPlatform(),
