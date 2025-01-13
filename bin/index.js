@@ -40,6 +40,14 @@ program
   });
 
 program
+  .command("dev:ssr")
+  .allowUnknownOption()
+  .allowExcessArguments()
+  .action(() => {
+    require("./cmd-dev-ssr").exec();
+  });
+
+program
   .command("lang")
   .allowUnknownOption()
   .allowExcessArguments()
@@ -53,6 +61,14 @@ program
   .allowExcessArguments()
   .action(() => {
     require("./cmd-icon").exec();
+  });
+
+program
+  .command("copy")
+  .allowUnknownOption()
+  .allowExcessArguments()
+  .action(() => {
+    require("./cmd-copy").exec();
   });
 
 program.parse(process.argv);
