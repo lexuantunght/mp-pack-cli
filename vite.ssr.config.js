@@ -44,8 +44,8 @@ export default defineConfig({
     copyPublicDir: false,
     ssr: true,
     minify: "esbuild",
-    target: "es5",
     rollupOptions: {
+      plugins: [],
       output: {
         strict: false,
       },
