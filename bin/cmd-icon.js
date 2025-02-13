@@ -9,7 +9,7 @@ exports.exec = () => {
 
   const { exec } = require("child_process");
 
-  exec(
+  const proc = exec(
     `node ${configFilePath} --i ${inpDir} --o ${outDir} --t ${templateDir}`,
     (err, o, e) => {
       if (err) console.error(err);
@@ -17,4 +17,6 @@ exports.exec = () => {
       if (e) console.error(e);
     }
   );
+  proc.stderr.on('data', console.error);
+  proc.stdout.on('data', console.log);
 };
