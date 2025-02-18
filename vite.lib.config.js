@@ -37,8 +37,12 @@ export default defineConfig({
   build: {
     emptyOutDir: true,
     assetsInlineLimit: 0,
-    copyPublicDir: true,
     minify: "esbuild",
+    rollupOptions: {
+      external: process.env.EXCLUDE_DEPS
+        ? process.env.EXCLUDE_DEPS.split(",")
+        : [],
+    },
   },
   ssr: {
     noExternal: process.env.NODE_ENV == "development" ? [] : getDependencies(),

@@ -18,6 +18,9 @@ exports.exec = async () => {
   if (argv.mode) {
     process.env.NODE_ENV = argv.mode;
   }
+  if (argv.excludeDeps) {
+    process.env.EXCLUDE_DEPS = argv.excludeDeps;
+  }
 
   await vite.build({
     configFile: configLibFilePath,
