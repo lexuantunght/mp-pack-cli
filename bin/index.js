@@ -32,6 +32,14 @@ program
   });
 
 program
+  .command("build:lib")
+  .allowUnknownOption()
+  .allowExcessArguments()
+  .action(() => {
+    require("./cmd-build-lib").exec();
+  });
+
+program
   .command("dev")
   .allowUnknownOption()
   .allowExcessArguments()
