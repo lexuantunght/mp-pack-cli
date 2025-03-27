@@ -20,7 +20,7 @@ let headers = array[0].split(";");
 const writeOut = (locale, out) => {
   return new Promise((resolve) => {
     if (!fs.existsSync(OUT_DIR)) {
-      fs.mkdirSync(OUT_DIR);
+      fs.mkdirSync(OUT_DIR, { recursive: true });
     }
     fs.writeFile(`${OUT_DIR}/${locale}.lang.json`, JSON.stringify(out), () => {
       Logger.info("Generated locale " + locale);

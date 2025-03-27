@@ -1,8 +1,15 @@
 exports.exec = async () => {
   const path = require("path");
   const argv = require("optimist").argv;
+  const fs = require("fs");
 
-  const configFilePath = path.join(__dirname, `../vite.config.js`);
+  const customConfigFilePathTs = path.join(process.cwd(), "mp-pack.config.ts");
+  const customConfigFilePathJs = path.join(process.cwd(), "mp-pack.config.js");
+  const configFilePath = fs.existsSync(customConfigFilePathTs)
+    ? customConfigFilePathTs
+    : fs.existsSync(customConfigFilePathJs)
+    ? customConfigFilePathJs
+    : path.join(__dirname, `../vite.config.js`);
   const vite = require("vite");
 
   // env
