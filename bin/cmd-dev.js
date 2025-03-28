@@ -5,18 +5,17 @@ exports.exec = async () => {
   const Logger = require("../utils/log");
 
   const port = argv.port || process.env.PORT || 3000;
-  const customConfigFilePathTs = path.join(process.cwd(), "mp-pack.config.ts");
-  const customConfigFilePathJs = path.join(process.cwd(), "mp-pack.config.js");
-  const configFilePath = fs.existsSync(customConfigFilePathTs)
-    ? customConfigFilePathTs
-    : fs.existsSync(customConfigFilePathJs)
-    ? customConfigFilePathJs
-    : path.join(__dirname, `../vite.config.js`);
+  const customConfigFilePath = path.join(process.cwd(), "mp-pack.config.json");
+  const configFilePath = path.join(__dirname, `../vite.config.js`);
+  const customConfig = fs.existsSync(customConfigFilePath)
+    ? JSON.parse(fs.readFileSync(configFilePath, "utf-8"))
+    : {};
 
   const vite = require("vite");
   const server = await vite.createServer({
     configFile: configFilePath,
     mode: "development",
+    ...customConfig,
   });
   await server.listen(port);
   Logger.info("Server started on port", port);
