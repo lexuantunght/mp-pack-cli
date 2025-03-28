@@ -3,13 +3,11 @@ exports.exec = async () => {
   const argv = require("optimist").argv;
   const fs = require("fs");
 
-  const customConfigFilePathTs = path.join(process.cwd(), "mp-pack.config.ts");
-  const customConfigFilePathJs = path.join(process.cwd(), "mp-pack.config.js");
-  const configFilePath = fs.existsSync(customConfigFilePathTs)
-    ? customConfigFilePathTs
-    : fs.existsSync(customConfigFilePathJs)
-    ? customConfigFilePathJs
-    : path.join(__dirname, `../vite.config.js`);
+  const configFilePath = path.join(__dirname, `../vite.config.js`);
+  const customConfigFilePath = path.join(process.cwd(), "mp-pack.config.json");
+  const customConfig = fs.existsSync(customConfigFilePath)
+    ? JSON.parse(fs.readFileSync(customConfigFilePath, "utf-8"))
+    : {};
   const vite = require("vite");
 
   // env
@@ -26,5 +24,6 @@ exports.exec = async () => {
     build: {
       outDir: path.resolve(process.cwd(), argv.outDir || "build"),
     },
+    ...customConfig,
   });
 };

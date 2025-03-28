@@ -5,10 +5,10 @@ exports.exec = async () => {
   const Logger = require("../utils/log");
 
   const port = argv.port || process.env.PORT || 3000;
-  const customConfigFilePath = path.join(process.cwd(), "mp-pack.config.json");
   const configFilePath = path.join(__dirname, `../vite.config.js`);
+  const customConfigFilePath = path.join(process.cwd(), "mp-pack.config.json");
   const customConfig = fs.existsSync(customConfigFilePath)
-    ? JSON.parse(fs.readFileSync(configFilePath, "utf-8"))
+    ? JSON.parse(fs.readFileSync(customConfigFilePath, "utf-8"))
     : {};
 
   const vite = require("vite");

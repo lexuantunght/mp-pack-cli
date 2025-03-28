@@ -1,8 +1,13 @@
 exports.exec = async () => {
   const path = require("path");
   const argv = require("optimist").argv;
+  const fs = require("fs");
 
   const configSSRFilePath = path.join(__dirname, `../vite.ssr.config.js`);
+  const customConfigFilePath = path.join(process.cwd(), "mp-pack.config.json");
+  const customConfig = fs.existsSync(customConfigFilePath)
+    ? JSON.parse(fs.readFileSync(customConfigFilePath, "utf-8"))
+    : {};
   const vite = require("vite");
 
   const entries = [];
@@ -29,5 +34,6 @@ exports.exec = async () => {
       outDir: path.resolve(process.cwd(), argv.outDir || "build"),
       target: argv.target || "es6",
     },
+    ...customConfig,
   });
 };

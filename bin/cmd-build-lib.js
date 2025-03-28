@@ -3,6 +3,10 @@ exports.exec = async () => {
   const argv = require("optimist").argv;
 
   const configLibFilePath = path.join(__dirname, `../vite.lib.config.js`);
+  const customConfigFilePath = path.join(process.cwd(), "mp-pack.config.json");
+  const customConfig = fs.existsSync(customConfigFilePath)
+    ? JSON.parse(fs.readFileSync(customConfigFilePath, "utf-8"))
+    : {};
   const vite = require("vite");
 
   const name = argv.name || "index";
@@ -35,5 +39,6 @@ exports.exec = async () => {
       outDir: path.resolve(process.cwd(), argv.outDir || "dist"),
       target: argv.target || "es6",
     },
+    ...customConfig,
   });
 };
