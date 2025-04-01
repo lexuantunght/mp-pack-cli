@@ -1,8 +1,4 @@
-import {
-  defineConfig,
-  splitVendorChunkPlugin,
-  transformWithEsbuild,
-} from "vite";
+import { defineConfig, transformWithEsbuild } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 import commonjs from "vite-plugin-commonjs";
 import react from "@vitejs/plugin-react";
@@ -81,7 +77,6 @@ export default defineConfig({
   plugins: [
     reactJSX(),
     react(),
-    splitVendorChunkPlugin(),
     tsconfigPaths(),
     commonjs(),
     reactVirtualized(),
@@ -112,6 +107,9 @@ export default defineConfig({
       },
     },
     copyPublicDir: true,
+    modulePreload: {
+      polyfill: false,
+    },
   },
   publicDir: path.resolve(process.cwd(), "public"),
   esbuild: {
