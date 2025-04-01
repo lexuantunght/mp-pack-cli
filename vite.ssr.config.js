@@ -22,7 +22,12 @@ function getIsDev() {
 
 function getDefinedFlags() {
   if (process.env.FLAGS) {
-    const flags = process.env.FLAGS.split(",").map((flag) => flag.split("="));
+    const flags = process.env.FLAGS.split(",")
+      .map((flag) => flag.split("="))
+      .map(([k, v]) => [
+        k,
+        v === "true" ? true : v === "false" ? false : isNaN(v) ? v : Number(v),
+      ]);
     return Object.fromEntries(flags);
   }
   return {};
