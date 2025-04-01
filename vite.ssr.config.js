@@ -20,6 +20,14 @@ function getIsDev() {
   return process.env.NODE_ENV == "development";
 }
 
+function getDefinedFlags() {
+  if (process.env.FLAGS) {
+    const flags = process.env.FLAGS.split(",").map((flag) => flag.split("="));
+    return Object.fromEntries(flags);
+  }
+  return {};
+}
+
 export default defineConfig({
   base: "./",
   plugins: [
@@ -37,6 +45,7 @@ export default defineConfig({
     __WEB__: getPlatform() == "web",
     __MOBILE__: getPlatform() == "ios" || getPlatform() == "android",
     __VERSION__: JSON.stringify(process.env.npm_package_version),
+    ...getDefinedFlags(),
   },
   build: {
     emptyOutDir: true,

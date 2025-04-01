@@ -22,6 +22,9 @@ exports.exec = async () => {
   if (argv.mode) {
     process.env.NODE_ENV = argv.mode;
   }
+  if (argv.flags) {
+    process.env.FLAGS = argv.flags;
+  }
 
   await vite.build({
     configFile: configSSRFilePath,
