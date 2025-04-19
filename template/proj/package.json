@@ -4,7 +4,7 @@
     "description": "create react app template",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "dev": "mp-pack-cli dev .",
+        "start": "mp-pack-cli dev .",
         "build": "mp-pack-cli build .",
         "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
     },

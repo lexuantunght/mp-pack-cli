@@ -7,11 +7,7 @@ exports.exec = () => {
   const outDir = path.join(process.cwd(), argv.o);
   const { exec } = require("child_process");
 
-  const proc = exec(`node ${configFilePath} --i ${inpDir} --o ${outDir}`, (err, o, e) => {
-    if (err) console.error(err);
-    if (o) console.log(o);
-    if (e) console.error(e);
-  });
-  proc.stderr.on('data', console.error);
-  proc.stdout.on('data', console.log);
+  const proc = exec(`node ${configFilePath} --i ${inpDir} --o ${outDir}`);
+  proc.stderr.on("data", console.error);
+  proc.stdout.on("data", console.log);
 };

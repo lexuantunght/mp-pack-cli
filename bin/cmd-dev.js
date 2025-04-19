@@ -19,5 +19,4 @@ exports.exec = async () => {
   });
   await server.listen(port);
   Logger.info("Server started on port", port);
-  server.openBrowser();
 };
