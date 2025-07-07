@@ -3,7 +3,10 @@ exports.exec = async () => {
   const argv = require("optimist").argv;
 
   const configLibFilePath = path.join(__dirname, `../vite.lib.config.js`);
-  const customConfigFilePath = path.join(process.cwd(), "mp-pack.config.json");
+  const customConfigFilePath = path.join(
+    process.cwd(),
+    argv.config ? argv.config : "mp-pack.config.json"
+  );
   const customConfig = fs.existsSync(customConfigFilePath)
     ? JSON.parse(fs.readFileSync(customConfigFilePath, "utf-8"))
     : {};
