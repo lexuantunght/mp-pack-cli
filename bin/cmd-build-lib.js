@@ -1,6 +1,7 @@
 exports.exec = async () => {
   const path = require("path");
   const argv = require("optimist").argv;
+  const fs = require("fs");
 
   const configLibFilePath = path.join(__dirname, `../vite.lib.config.js`);
   const customConfigFilePath = path.join(

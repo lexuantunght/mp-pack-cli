@@ -1,6 +1,6 @@
 {
   "name": "mp-pack-cli",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "description": "The CLI to create & develop a Web/React Application",
   "main": "./bin/index.js",
   "scripts": {
