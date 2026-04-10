@@ -3,6 +3,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import commonjs from "vite-plugin-commonjs";
 import { babel } from "@rollup/plugin-babel";
 import path from "path";
+import commonjs2 from "@rollup/plugin-commonjs";
 
 function getDependencies() {
   const packageJson = require(path.join(process.cwd(), `package.json`));
@@ -33,10 +34,21 @@ function getDefinedFlags() {
   return {};
 }
 
+function getDynamicRequireTargets() {
+  if (process.env.DYNAMIC_REQUIRE_TARGETS) {
+    return process.env.DYNAMIC_REQUIRE_TARGETS.split(",");
+  }
+  return undefined;
+}
+
 export default defineConfig({
   base: "./",
   plugins: [
     tsconfigPaths(),
+    commonjs2({
+      dynamicRequireTargets: getDynamicRequireTargets(),
+      ignoreDynamicRequires: true,
+    }),
     commonjs(),
     babel({
       exclude: ["node_modules", "**/node_modules/*"],

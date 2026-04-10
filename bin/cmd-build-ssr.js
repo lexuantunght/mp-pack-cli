@@ -6,7 +6,7 @@ exports.exec = async () => {
   const configSSRFilePath = path.join(__dirname, `../vite.ssr.config.js`);
   const customConfigFilePath = path.join(
     process.cwd(),
-    argv.config ? argv.config : "mp-pack.config.json"
+    argv.config ? argv.config : "mp-pack.config.json",
   );
   const customConfig = fs.existsSync(customConfigFilePath)
     ? JSON.parse(fs.readFileSync(customConfigFilePath, "utf-8"))
@@ -27,6 +27,9 @@ exports.exec = async () => {
   }
   if (argv.flags) {
     process.env.FLAGS = argv.flags;
+  }
+  if (argv.dynamicRequireTargets) {
+    process.env.DYNAMIC_REQUIRE_TARGETS = argv.dynamicRequireTargets;
   }
 
   await vite.build({
